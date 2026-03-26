@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: certificate-backend
+  profiles:
+    default: dev
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+  compression:
+    enabled: true
+    min-response-size: 2KB
+    mime-types: application/json,application/xml,text/html,text/plain,text/css,text/javascript,application/javascript
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: when_authorized
+  info:
+    env:
+      enabled: true
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  admin-wallets: ${ADMIN_WALLETS:0xc7E28fd8553B4D20733dC437a9189eBA4C0ED4ec}
+  cors:
+    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:5173}
+  http:
+    connect-timeout-ms: ${HTTP_CONNECT_TIMEOUT_MS:5000}
+    read-timeout-ms: ${HTTP_READ_TIMEOUT_MS:20000}
+  pinata:
+    jwt: ${PINATA_JWT}
+    url: ${PINATA_URL:https://api.pinata.cloud/pinning/pinFileToIPFS}
+  ipfs:
+    gateway-base-url: ${IPFS_GATEWAY_BASE:https://gateway.pinata.cloud/ipfs/}
+  public-base-url: ${PUBLIC_BASE_URL:http://localhost:5173}
+  ai:
+    python-command: ${AI_PYTHON_COMMAND:python}
+    script-path: ${AI_SCRIPT_PATH:../ai/document_authenticity_model.py}
+  blockchain:
+    rpc-url: ${ETH_RPC_URL:https://ethereum-sepolia.publicnode.com}
+    private-key: ${ETH_PRIVATE_KEY}
+    contract-address: ${CONTRACT_ADDRESS:0x7aa84147112e1df970770588bACA8f9bE378b878}
+    chain-id: ${ETH_CHAIN_ID:11155111}
+    explorer-tx-base-url: ${ETHERSCAN_TX_BASE:https://sepolia.etherscan.io/tx/}
+
+

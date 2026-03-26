@@ -1,0 +1,16 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/certchain}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:dev-only-jwt-secret-key-minimum-32-chars}
+  pinata:
+    jwt: ${PINATA_JWT:dev-pinata-token}
+  public-base-url: ${PUBLIC_BASE_URL:http://localhost:5173}
+  ai:
+    python-command: ${AI_PYTHON_COMMAND:python}
+    script-path: ${AI_SCRIPT_PATH:../ai/document_authenticity_model.py}
+  blockchain:
+    private-key: ${ETH_PRIVATE_KEY:0x1111111111111111111111111111111111111111111111111111111111111111}

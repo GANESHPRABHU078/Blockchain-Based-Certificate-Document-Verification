@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.certchain.backend.service.AuthServiceTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.08 s -- in com.certchain.backend.service.AuthServiceTest
